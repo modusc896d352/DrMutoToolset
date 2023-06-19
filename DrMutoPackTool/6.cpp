@@ -85,7 +85,7 @@ void r_ffunc::extract_file_data(std::shared_ptr<DrMuto000helper::helper1> sp1, s
     short block_size{ 2048 };
     long file_blocks{ 0 };
     long last_block{ 0 };
-    short remaining_size{ 0 };
+    long remaining_size{ 0 };
     long output_file_offset{ 0 };
     long bytes_left_to_write{ file_size };
 
@@ -155,7 +155,7 @@ void r_ffunc::extract_file_data(std::shared_ptr<DrMuto000helper::helper1> sp1, s
                     }
                     if (i1 == last_block)
                     {
-                        block_size = remaining_size;
+                        block_size = (short)remaining_size;
                     }
                     target_input_file.seekg(file_offset, std::ios_base::beg);
                     std::vector<char> file_block(block_size);
