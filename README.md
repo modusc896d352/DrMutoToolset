@@ -16,7 +16,7 @@ As of this writing, the toolset consists of the following programs:
 
 - [**DrMutoPackTool**](DrMutoPackTool/README.md) - A tool for unpacking all files from bigfiles based on an input name. A good choice for dealing with files from the **PlayStation2** and **Xbox** versions of the game.
 
-They are all meant to be run on the command-line terminal. Running any of the programs without arguments will list a couple of parameters that the programs themselves support.
+In their current state, said programs are all meant to be run on the command-line terminal. Running any of the programs without arguments will list a couple of parameters that the programs themselves support.
 
 ## Lasting Words
 
