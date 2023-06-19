@@ -78,7 +78,7 @@ long r_ffunc::decompress_drmuto_block(std::vector<char> &input_data, long target
 
 void r_ffunc::extract_file_data(std::shared_ptr<DrMuto000helper::helper1> sp1, std::string input_name, long file_offset, long file_size, long part_number)
 {
-    bool ok1{ false }, ok2{ false };
+    bool ok1{ false }, ok2{ false }, ok3{ false }, ok4{ false };
     std::ifstream target_input_file;
     std::ofstream target_output_file;
     std::string output_file_name{ "" };
@@ -91,42 +91,85 @@ void r_ffunc::extract_file_data(std::shared_ptr<DrMuto000helper::helper1> sp1, s
 
     output_file_name.append(sp1->output_folder_path);
     output_file_name.append(input_name);
-    target_input_file.open(sp1->actual_part_name[part_number], std::ios_base::in | std::ios_base::binary | std::ios_base::ate, _SH_DENYRD);
-    if (target_input_file.rdbuf()->is_open())
+    if (sp1->part_file_exists[part_number] == true)
     {
         ok1 = true;
     }
     if (ok1 == true)
     {
-        target_output_file.open(output_file_name, std::ios_base::out | std::ios_base::binary | std::ios_base::app, _SH_DENYWR);
-        if (target_output_file.rdbuf()->is_open())
+        target_input_file.open(sp1->actual_part_name[part_number], std::ios_base::in | std::ios_base::binary | std::ios_base::ate, _SH_DENYRD);
+        if (target_input_file.is_open())
         {
             ok2 = true;
         }
         if (ok2 == true)
         {
-            file_blocks = file_size / block_size;
-            remaining_size = file_size - (file_blocks * block_size);
-            if (remaining_size != 0) file_blocks++;
-            last_block = (file_blocks - 1);
-            for (long i1 = 0; i1 < file_blocks; i1++)
+            target_output_file.open(output_file_name, std::ios_base::out | std::ios_base::binary | std::ios_base::app, _SH_DENYWR);
+            if (target_output_file.is_open())
             {
-                if (i1 == last_block)
-                {
-                    block_size = remaining_size;
-                }
-                target_input_file.seekg(file_offset, std::ios_base::beg);
-                std::vector<char> file_block(block_size);
-                target_input_file.read(reinterpret_cast<char*>(file_block.data()), block_size);
-                file_offset += block_size;
-                target_output_file.seekp(output_file_offset, std::ios_base::beg);
-                target_output_file.write(reinterpret_cast<char*>(file_block.data()), block_size);
-                output_file_offset += block_size;
-                bytes_left_to_write -= block_size;
+                ok3 = true;
             }
-            if (bytes_left_to_write == 0)
+            if (ok3 == true)
             {
-                std::cout << "Current file (" << input_name << ") is now extracted. " << std::endl;
+                file_blocks = file_size / block_size;
+                remaining_size = file_size - (file_blocks * block_size);
+                if (remaining_size != 0) file_blocks++;
+                last_block = (file_blocks - 1);
+                for (long i1 = 0; i1 < file_blocks; i1++)
+                {
+                    ok4 = false;
+                    if (file_offset == sp1->part_size[part_number])
+                    {
+                        target_input_file.close();
+                        part_number++;
+                        file_offset = 0;
+                        switch (sp1->part_file_exists[part_number])
+                        {
+                        case true:
+                            ok4 = true;
+                            break;
+                        case false:
+                            std::cout << std::endl << "Seems like we've reached a limit." << std::endl;
+                            std::cout
+                                << "The file we're trying to extract to (" << input_name << ") needs about "
+                                << std::dec
+                                << std::nouppercase
+                                << bytes_left_to_write
+                                << " bytes left to be fully extracted,"
+                                << std::endl;
+                            std::cout
+                                << "and yet the bigfile ("
+                                << sp1->part_name[part_number]
+                                << ") that holds said file is simply not present."
+                                << std::endl;
+                            break;
+                        }
+                        if (ok4 == true)
+                        {
+                            target_input_file.open(sp1->actual_part_name[part_number], std::ios_base::in | std::ios_base::binary | std::ios_base::ate, _SH_DENYRD);
+                        }
+                    }
+                    if (sp1->part_file_exists[part_number] == false)
+                    {
+                        break;
+                    }
+                    if (i1 == last_block)
+                    {
+                        block_size = remaining_size;
+                    }
+                    target_input_file.seekg(file_offset, std::ios_base::beg);
+                    std::vector<char> file_block(block_size);
+                    target_input_file.read(reinterpret_cast<char*>(file_block.data()), block_size);
+                    file_offset += block_size;
+                    target_output_file.seekp(output_file_offset, std::ios_base::beg);
+                    target_output_file.write(reinterpret_cast<char*>(file_block.data()), block_size);
+                    output_file_offset += block_size;
+                    bytes_left_to_write -= block_size;
+                }
+                if (bytes_left_to_write == 0)
+                {
+                    std::cout << "Current file (" << input_name << ") is now extracted. " << std::endl;
+                }
             }
         }
     }
