@@ -14,10 +14,14 @@ The entire toolset was tested with **Windows 10 Pro 22H2** as its operating syst
 
 As of this writing, the toolset consists of the following programs:
 
-- [**DrMutoPackTool**](DrMutoPackTool/README.md) - A tool for unpacking all files from bigfiles based on an input name. Given that the **PlayStation2** and **Xbox** versions of the game contain packed bigfiles ranging in size from 150MB to under 2GB, you may be on the lookout for this one.
+- [**DrMutoPackTool**](DrMutoPackTool/README.md) - A tool for unpacking all files from bigfiles based on an input name. A good choice for dealing with files from the **PlayStation2** and **Xbox** versions of the game.
 
-They are all meant to be run on the command-line terminal.
+They are all meant to be run on the command-line terminal. Running any of the programs without arguments will list a couple of parameters that the programs themselves support.
 
 ## Lasting Words
+
+While I've made a lot of effort into ensuring the toolset itself is as bug-free as possible, there are times when you may happen to step in to some oversight I may not have considered when making said toolset. So, just in case you run into a bug with one of the tools outlined above, then by all means *do* open an issue about it! That would help me a lot.
+
+If you intend to contribute more code, be it by adding new features, fixing bugs or just improving the overall code, please note that I haven't outlined anything that would get you up-to-speed with the ins-and-outs of the programs so I cannot give you the full picture of how you're going to contribute yet. That said, if you have something that enhances the already-existing codebase in some way, then by all means *do* open an pull request about it! Again, I'd be grateful for your help.
 
 Happy tinkering!
