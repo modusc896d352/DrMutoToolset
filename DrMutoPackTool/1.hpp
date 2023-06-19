@@ -39,9 +39,11 @@ namespace DrMuto000helper
 		/* the size of the part file (in bytes). */
 		std::streamoff part_size[MAX_PARTS]{ 0 };
 		//helper1(std::string[MAX_PARTS], char[MAX_PARTS], std::string[MAX_PARTS], bool[MAX_PARTS], long[MAX_PARTS], std::ifstream[MAX_PARTS], std::streamoff[MAX_PARTS]);
+		/* the "option level", set based on user input. */
 		char option_level{ 0 };
-		//char output_folder_path{ 0 };
+		/* the folder symbol that came with the input name, if it has one. */
 		std::string default_folder_symbol{ "" };
+		/* the output folder path we're extracting the files to. */
 		std::string output_folder_path{ "" };
 	};
 	struct header_info

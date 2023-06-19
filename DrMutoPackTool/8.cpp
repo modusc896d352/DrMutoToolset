@@ -33,7 +33,7 @@ void parse_drmuto_toc(std::shared_ptr<DrMuto000helper::helper1> sp1, std::shared
 			target_output_path.append(sp1->default_folder_symbol);
 			if (_mkdir(target_output_path.c_str()) == 0)
 			{
-				std::cout << std::endl << "Creating output folder if it doesn't already exist." << std::endl;
+				std::cout << std::endl << "Creating output folder if it doesn't already exist." << std::endl << std::endl;
 			}
 			sp1->output_folder_path = target_output_path;
 		}
