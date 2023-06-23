@@ -16,6 +16,7 @@ void fill_drmuto_info1(std::shared_ptr<DrMuto000helper::helper1> sp1)
 	}
 }
 
+/*
 void detect_input_name(std::string input_name, size_t name_size, std::shared_ptr<DrMuto000helper::helper1> sp1)
 {
 	std::string backup_name1{ input_name };
@@ -133,3 +134,4 @@ void detect_input_name(std::string input_name, size_t name_size, std::shared_ptr
 		}
 	}
 }
+*/

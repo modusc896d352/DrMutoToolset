@@ -1,6 +1,7 @@
 #ifndef _I_H_
 #define _I_H_
 
+#include <filesystem>
 #include <fstream>
 #include <string>
 #include <vector>
@@ -138,9 +139,12 @@ and fills them in with actual data (part number and part name, respectively).
 */
 void fill_drmuto_info1(std::shared_ptr<DrMuto000helper::helper1> sp1);
 /*
-Uses the input name as a basis to determine whether or not the program has everything it needs to basically get going.
+A (somewhat) better version of what used to be detect_input_name.
+Said former function has some fairly involved code that isn't exactly elegant or even close to clean,
+necessarily, instead it just turned into a convoluted mess of nonsensical code
+to make the whole thing work at all without any additional arguments.
 */
-void detect_input_name(std::string input_name, size_t name_size, std::shared_ptr<DrMuto000helper::helper1> sp1);
+void detect_input_name_v1(std::string input_name, std::shared_ptr<DrMuto000helper::helper1> sp1);
 /*
 Function name should be hopefully self-explanatory.
 */
@@ -152,22 +156,27 @@ In practice it just gives the user two choices, both of which should kinda work 
 */
 void choose_your_mode(std::shared_ptr<DrMuto000helper::helper1> sp1, std::shared_ptr<DrMuto000helper::header_info> sp2, std::vector<char> &toc_data);
 /*
-After all the trauma that the program went through in preparing the TOC file for futher use,
-the user will then be asked what exactly are they going to do with it.
-In practice it just gives the user two choices, both of which should kinda work I think? Errrrrrr...
+Tries to do some preparations to ensure we actually read the TOC this time.
 */
 void parse_drmuto_toc(std::shared_ptr<DrMuto000helper::helper1> sp1, std::shared_ptr<DrMuto000helper::header_info> sp2, std::vector<char> &toc_data);
 /*
-After all the trauma that the program went through in preparing the TOC file for futher use,
-the user will then be asked what exactly are they going to do with it.
-In practice it just gives the user two choices, both of which should kinda work I think? Errrrrrr...
+Goes through the TOC file to see what's there and what isn't.
+That often includes parsing the directory and file structure of the TOC file.
 */
 void parse_drmuto_dir(std::shared_ptr<DrMuto000helper::helper1> sp1, std::shared_ptr<DrMuto000helper::header_info> sp2, std::shared_ptr<DrMuto000helper::toc_info> sp3, std::shared_ptr<DrMuto000helper::dir_name_info> sp4, std::vector<char> &toc_data, char current_dir_num);
 /*
-After all the trauma that the program went through in preparing the TOC file for futher use,
-the user will then be asked what exactly are they going to do with it.
-In practice it just gives the user two choices, both of which should kinda work I think? Errrrrrr...
+Uses external information gained from the above function
+to either print basic info from a selected file through the TOC
+or to save it to disk entirely.
 */
 void parse_drmuto_file(std::shared_ptr<DrMuto000helper::helper1> sp1, std::shared_ptr<DrMuto000helper::header_info> sp2, std::shared_ptr<DrMuto000helper::toc_info> sp3, std::shared_ptr<DrMuto000helper::dir_name_info> sp4, std::shared_ptr<DrMuto000helper::file_info> sp5, std::vector<char>& toc_data, long file_info_pos, std::string input_name);
+
+// --- Commented-out functions go here ---
+
+/*
+Uses the input name as a basis to determine whether or not the program has everything it needs to basically get going.
+No longer useful after detect_input_name_v1 came into existence.
+void detect_input_name(std::string input_name, size_t name_size, std::shared_ptr<DrMuto000helper::helper1> sp1);
+*/
 
 #endif _I_H_

@@ -47,8 +47,6 @@ int main(int argc, char* argv[])
 			}
 		}
 	}
-	/* size of the first argument, total. */
-	std::string::size_type insize{0};
 	/* how many arguments this program expects to take. */
 	long expected_arguments{ 1 };
 	/* how many arguments this program has actually gotten. */
@@ -75,22 +73,7 @@ int main(int argc, char* argv[])
 		break;
 	case 2:
 		if (help_message_enabled == false) {
-			insize = input_name.length();
-			/* the thing that looks out for the last character of an input name string. */
-			std::string::reference iNameRefPrequel = input_name.std::string::at(insize - 1);
-			if (iNameRefPrequel == 0x22)
-			{
-				/*
-				if the input name ends with a backslash symbol (\) of some kind,
-				then the compiled C++ program will think it's a quotation mark instead (").
-				this is assuming that the input name is enclosed in quotation marks,
-				and that said name consists of, and ends with, actual folders in its namesake.
-				let's fix that.
-				*/
-				input_name.pop_back();
-				input_name.push_back(0x5c);
-			}
-			detect_input_name(input_name, insize, p2_up1);
+			detect_input_name_v1(input_name, p2_up1);
 			start_work_on_everything(p2_up1);
 		}
 		else {

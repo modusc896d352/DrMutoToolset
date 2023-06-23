@@ -26,15 +26,15 @@ long r_ffunc::decompress_drmuto_block(std::vector<char> &input_data, long target
         if (fc_cf == 0)
         {
             fc_inp_o1++;
-            fc_nb1 = r_ffunc::read_u8_from_mem(fc_inp_o,input_data);
+            fc_nb1 = r_ffunc::read_u8_from_mem(fc_inp_o, input_data);
             fc_cf = 8;
         }
         fc_nb1a = fc_nb1;
         fc_cf--;
         if ((fc_nb1a & 1) == 0)
         {
-            fc_nb2 = r_ffunc::read_u8_from_mem(fc_inp_o1,input_data);
-            fc_nb3 = r_ffunc::read_u8_from_mem((fc_inp_o1+1),input_data);
+            fc_nb2 = r_ffunc::read_u8_from_mem(fc_inp_o1, input_data);
+            fc_nb3 = r_ffunc::read_u8_from_mem((fc_inp_o1 + 1), input_data);
             fc_inp_o1 += 2;
             fc_inp_o = fc_inp_o1;
             fc_nl1 = ((fc_nb2 & 0xf0) << 4) | fc_nb3;
@@ -55,8 +55,8 @@ long r_ffunc::decompress_drmuto_block(std::vector<char> &input_data, long target
             fc_nl6 = fc_bl2_o1 + -fc_nl1;
             do
             {
-                fc_nb5 = r_ffunc::read_u8_from_mem(fc_nl6,output_data);
-                r_ffunc::put_u8_to_mem(fc_nb5, fc_bl2_o1,output_data);
+                fc_nb5 = r_ffunc::read_u8_from_mem(fc_nl6, output_data);
+                r_ffunc::put_u8_to_mem(fc_nb5, fc_bl2_o1, output_data);
                 fc_nl6++;
                 fc_bl2_o1++;
                 fc_nl5--;
@@ -64,8 +64,8 @@ long r_ffunc::decompress_drmuto_block(std::vector<char> &input_data, long target
             } while (fc_nl5 != -1);
         }
         else {
-            fc_nb4 = r_ffunc::read_u8_from_mem(fc_inp_o1,input_data);
-            r_ffunc::put_u8_to_mem(fc_nb4, fc_bl2_o1,output_data);
+            fc_nb4 = r_ffunc::read_u8_from_mem(fc_inp_o1, input_data);
+            r_ffunc::put_u8_to_mem(fc_nb4, fc_bl2_o1, output_data);
             fc_inp_o1++;
             fc_bl2_o1++;
             fc_inp_o = fc_inp_o1;
