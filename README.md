@@ -8,6 +8,8 @@ As the whole repository in which this toolset is based on is WIP and I'm just ba
 
 I cannot give any building instructions at this time, but what you do need to know for now is that this was programmed in **Visual Studio 2022 Version 17.6.3**, with the **C++ desktop extension** installed to make this a reality.
 
+You also need to set the **C++ language standard** to **C++17** or later. The entire toolset is being programmed with **C++17** (again) as a base since this is how things'll be done here from this point onwards.
+
 The entire toolset was tested with **Windows 10 Pro 22H2** as its operating system, with **64-bit support** based on the **x86-64 instruction set**.
 
 ## The Titular Toolset
