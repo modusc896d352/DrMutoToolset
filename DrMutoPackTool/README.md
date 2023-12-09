@@ -42,7 +42,7 @@ Here are additional insights into the ins-and-outs of the tool.
 
 When the first argument takes the form of an input file or folder, the tool itself will check for the TOC file (DRMUTO.000) and will see if it exists on the same place said file or folder is in.
 
-If it does, it will load that first and will upload as much of that data into memory for further usage. At which point said uploaded data will be prepared for further usage.
+If it does, it will load that first and will upload as much of that data into memory so as to prepare it for further usage.
 
 When all is said and done, the tool will then show you two modes and ask you to type only one. Let's go over them one-by-one.
 
