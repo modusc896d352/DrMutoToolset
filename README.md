@@ -27,3 +27,7 @@ While I've made a lot of effort into ensuring the toolset itself is as bug-free 
 If you intend to contribute more code, be it by adding new features, fixing bugs or just improving the overall code, please note that I haven't outlined anything that would get you up-to-speed with the ins-and-outs of the programs so I cannot give you the full picture of how you're going to contribute yet. That said, if you have something that enhances the already-existing codebase in some way, then by all means *do* open an pull request about it! Again, I'd be grateful for your help.
 
 Happy tinkering!
+
+## Lasting Words (again)
+
+baa baa baa baa
