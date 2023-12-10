@@ -1,3 +1,4 @@
+#include <cuchar>
 #include <fstream>
 #include <filesystem>
 #include <iomanip>
@@ -8,18 +9,19 @@
 #include <sstream>
 #include "1.hpp"
 
-void detect_input_name_v1(std::string input_name, std::shared_ptr<DrMuto000helper::helper1> sp1)
+void detect_input_name_v1(std::u8string input_name, std::shared_ptr<DrMuto000helper::helper1> sp1)
 {
-	std::string backup_name1{ input_name };
-	std::string::size_type insize{0};
-	std::string::size_type find1{0};
-	std::string::size_type find2{0};
-	std::basic_string <char>::iterator find_out;
-	std::string alt_namesake {sp1->base_namesake};
+	std::u8string backup_name1{ input_name };
+	std::u8string::size_type insize{0};
+	std::u8string::size_type find1{0};
+	std::u8string::size_type find2{0};
+	std::basic_string <char8_t>::iterator find_out;
+	auto temp1 = sp1->base_namesake.c_str();
+	std::u8string alt_namesake{ (char8_t)temp1 };
 
 	insize = input_name.length();
 	alt_namesake.push_back(0x2e); // "."
-	find1 = backup_name1.std::string::find(alt_namesake);
+	find1 = backup_name1.std::u8string::find(alt_namesake);
 	switch (find1)
 	{
 	case -1:

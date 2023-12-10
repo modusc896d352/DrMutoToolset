@@ -86,6 +86,7 @@ void r_ffunc::extract_file_data(std::shared_ptr<DrMuto000helper::helper1> sp1, s
     long file_blocks{ 0 };
     long last_block{ 0 };
     long remaining_size{ 0 };
+    long modulus{ 0 };
     long output_file_offset{ 0 };
     long bytes_left_to_write{ file_size };
 
@@ -113,7 +114,8 @@ void r_ffunc::extract_file_data(std::shared_ptr<DrMuto000helper::helper1> sp1, s
             {
                 file_blocks = file_size / block_size;
                 remaining_size = file_size - (file_blocks * block_size);
-                if (remaining_size != 0) file_blocks++;
+                modulus = block_size - remaining_size;
+                if (modulus != 0x800) file_blocks++;
                 last_block = (file_blocks - 1);
                 for (long i1 = 0; i1 < file_blocks; i1++)
                 {
@@ -155,7 +157,15 @@ void r_ffunc::extract_file_data(std::shared_ptr<DrMuto000helper::helper1> sp1, s
                     }
                     if (i1 == last_block)
                     {
-                        block_size = (short)remaining_size;
+                        // ugly hack to ensure that certain files ("/audio/ui.mbx" in particular) doesn't come away empty.
+                        if (modulus != 0x800)
+                        {
+                            block_size = (short)remaining_size;
+                        }
+                        else
+                        {
+                            block_size = (short)modulus;
+                        }
                     }
                     target_input_file.seekg(file_offset, std::ios_base::beg);
                     std::vector<char> file_block(block_size);

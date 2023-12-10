@@ -141,7 +141,7 @@ void parse_drmuto_dir(std::shared_ptr<DrMuto000helper::helper1> sp1, std::shared
 					{
 						std::string mkdir_target{ "" };
 						mkdir_target.append(sp1->output_folder_path);
-						mkdir_target.pop_back();
+						//mkdir_target.pop_back();
 						mkdir_target.append(tentative_path_name);
 						mkdir_target.append(sp1->default_folder_symbol);
 						int mkdir_success = _mkdir(mkdir_target.c_str());

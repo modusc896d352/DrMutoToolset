@@ -11,7 +11,7 @@ int main(int argc, char* argv[])
 	/* how many arguments this program currently has. */
 	int arg_count{ 0 };
 	/* the thing that serves as the program's first argument. */
-	std::string input_name("");
+	std::string input_name{""};
 	/* how many substance these arguments currently have. */
 	std::string arguments[16]{ "" };
 	/* a trigger for if the user is having trouble using the tool. */
@@ -21,7 +21,7 @@ int main(int argc, char* argv[])
 	/* wanna use an struct or an class across various functions? this is how. */
 	std::shared_ptr<DrMuto000helper::helper1> p2_up1 = std::make_shared<DrMuto000helper::helper1>();
 
-	for (arg_count = 0; arg_count < argc; arg_count++)
+	for (arg_count = 1; arg_count < argc; arg_count++)
 	{
 		arguments[arg_count] = argv[arg_count];
 		if (arg_count == 1)
@@ -73,7 +73,9 @@ int main(int argc, char* argv[])
 		break;
 	case 2:
 		if (help_message_enabled == false) {
-			detect_input_name_v1(input_name, p2_up1);
+			auto temp2 = input_name.c_str();
+			std::u8string temp3{ reinterpret_cast<const char8_t*>(temp2) };
+			detect_input_name_v1(temp3, p2_up1);
 			start_work_on_everything(p2_up1);
 		}
 		else {

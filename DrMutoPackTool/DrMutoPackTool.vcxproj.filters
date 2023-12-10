@@ -18,28 +18,28 @@
     <ClCompile Include="1.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
-    <ClCompile Include="3.cpp">
+    <ClCompile Include="1_build-drmuto-struct_1.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
-    <ClCompile Include="2.cpp">
+    <ClCompile Include="1_help-messages.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
-    <ClCompile Include="4.cpp">
+    <ClCompile Include="1_build-drmuto-struct_3.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
-    <ClCompile Include="5.cpp">
+    <ClCompile Include="1_read-from-mem.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
-    <ClCompile Include="6.cpp">
+    <ClCompile Include="1_parse-drmuto-info_1.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
-    <ClCompile Include="7.cpp">
+    <ClCompile Include="1_choose-your-mode.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
-    <ClCompile Include="8.cpp">
+    <ClCompile Include="1_parse-drmuto-info_2.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
-    <ClCompile Include="9.cpp">
+    <ClCompile Include="1_build-drmuto-struct_2.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
   </ItemGroup>
