@@ -157,7 +157,7 @@ void r_ffunc::extract_file_data(std::shared_ptr<DrMuto000helper::helper1> sp1, s
                     }
                     if (i1 == last_block)
                     {
-                        // ugly hack to ensure that certain files ("/audio/ui.mbx" in particular) doesn't come away empty.
+                        // ugly hack to ensure that certain files ("/audio/ui.mbx" in particular) don't come away empty.
                         if (modulus != 0x800)
                         {
                             block_size = (short)remaining_size;

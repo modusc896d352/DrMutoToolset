@@ -144,7 +144,7 @@ Said former function has some fairly involved code that isn't exactly elegant or
 necessarily, instead it just turned into a convoluted mess of nonsensical code
 to make the whole thing work at all without any additional arguments.
 */
-void detect_input_name_v1(std::u8string input_name, std::shared_ptr<DrMuto000helper::helper1> sp1);
+void detect_input_name_v1(std::string input_name, std::shared_ptr<DrMuto000helper::helper1> sp1);
 /*
 Function name should be hopefully self-explanatory.
 */
